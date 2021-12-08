@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Capstone.Models.Item>
+
+<h1 class="headerCenter"><i>Available Items</i></h1>
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin") || User.Identity.IsAuthenticated && User.IsInRole("Owner"))
+{
+    <h4 class="text-primary">
+        <a asp-action="Create">Create New</a>
+    </h4>
+}
+@*@foreach (var item in Model)
+    {
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <img src="~/images/@Html.DisplayFor(modelItem => item.ImagePath)" width="150" height="150" />
+        </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Item</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p><h6>Name:</h6> @Html.DisplayFor(modelItem => item.Name)</p> <br>
+                        <p><h6>Price:</h6> $@Html.DisplayFor(modelItem => item.Price)</p> <br>
+                        <p><h6>Description:</h6> @Html.DisplayFor(modelItem => item.Description)</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }*@
+<div class="row">
+    <table class="table normal-gradient">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="~/images/@Html.DisplayFor(modelItem => item.ImagePath)" width="150" height="150" />
+                    </td>
+                    <td>
+                        <b>@Html.DisplayFor(modelItem => item.Name)</b>
+                    </td>
+                    <td>
+                        $@Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        <i>@Html.DisplayFor(modelItem => item.Description)</i>
+                    </td>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin") || User.Identity.IsAuthenticated && User.IsInRole("Owner"))
+                    {
+
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    }
+                </tr>
+            }
+            <tr>
+                <td>
+                    <h3><a href="https://www.facebook.com/summerdreamflowers/shop/?ref_code=view_shop_cta&ref_surface=page" class="u-border-2 u-border-black u-btn u-button-style u-hover-black u-text-black u-text-hover-white u-btn-1">Buy items</a></h3>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="row"><p><br /></p></div>
+<div class="row"><p></p></div>
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+</script>

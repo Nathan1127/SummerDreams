@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Users\Nathan\OneDrive - Neumont College of Computer Science\Year 3\Quarter 1\Capstone\Capstone\Capstone\Capstone\obj\Release\net5.0\PubTmp\Out\" />
+  <dbfullsql path="C:\Users\Nathan\OneDrive - Neumont College of Computer Science\Year 3\Quarter 1\Capstone\Capstone\Capstone\Capstone\obj\Release\net5.0\PubTmp\EFSQLScripts\Capstone.Models.db_a7be6c_capstoneContext.sql" />
+</sitemanifest>

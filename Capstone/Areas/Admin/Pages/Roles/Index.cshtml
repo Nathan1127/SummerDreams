@@ -1,0 +1,43 @@
+﻿@page
+@model Capstone.Areas.Admin.Pages.Roles.IndexModel 
+@{
+}
+
+<div class="row">
+    <div class="col-sm-6">
+        <h1>Current Roles</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 text-right">
+        <a asp-page="/Roles/Create" class="btn btn-primary">Create Role</a> | <a asp-page="/Roles/AddUserRole" class="btn btn-primary">Add User To Role</a>
+    </div>
+</div>
+@if (Model.Roles != null && Model.Roles.Count != 0)
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table w-100">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var role in Model.Roles)
+                    {
+                    <tr>
+                        <td>@role.Id</td>
+                        <td>@role.Name</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <h3>No roles in database</h3>
+}
